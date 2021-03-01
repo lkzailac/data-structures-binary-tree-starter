@@ -2,8 +2,13 @@
 // binary tree, traverses it in depth-first-search
 // order, and returns an array containing the values
 // in the order you visited them.
-function dfs(root){
-    // Your code here
+function dfs(root, array=[]){
+    if(!root)
+        return [];
+    array.push(root.val)
+    dfs(root.left, array);
+    dfs(root.right, array);
+    return array;
 }
 
 module.exports = { dfs };
