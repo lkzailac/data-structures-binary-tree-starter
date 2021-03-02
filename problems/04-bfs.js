@@ -7,27 +7,23 @@ const { TreeNode } = require('../problems/01-tree-node.js');
 // class LinkedList{
 //     constructor()
 // }
-let array = [];
+
 function bfs(root){
     if(!root) return [];
 
+    let array = [];
     let queue = [root];
 
     while(queue.length){
-        let level = queue.length;
-        let sub = [];
-        for(let i = 0; i < level; i++){
-            let top = queue.shift();
+        let top = queue.shift();
 
-            sub.push(top.val);
-            if(root.left){
-                queue.push(root.left);
-            }
-            if(root.right){
-                queue.push(root.right);
-            }
+        array.push(top.val);
+        if(top.left){
+            queue.push(top.left);
         }
-        array.push(...sub)
+        if(top.right){
+            queue.push(top.right);
+        }
     }
     return array;
 }
